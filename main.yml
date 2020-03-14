@@ -1,0 +1,15 @@
+--- # main playbook
+- hosts: all
+  gather_facts: no
+  become: yes
+  tasks:
+  - name: knock knock
+    ping:
+
+- hosts: all
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: os_configuration
+      vars:
+        logfile: "/var/log/ansible_os_configuration.log"

@@ -1,0 +1,13 @@
+- name: Log playbook start
+  shell: "echo -n 'Start: ' >> {{ logfile }}; date >> {{ logfile }}"
+- name: Install baseline software
+  package: pkg={{ item }} state=present
+  with_items:
+  - epel-release
+  - wget
+  - deltarpm
+  - curl
+- name: Install updates
+  package: name=* state=latest
+- name: Log playbook stop
+  shell: "echo -n 'Stop:  ' >> {{ logfile }}; date  >> {{ logfile }}; echo '' >> {{ logfile }}"

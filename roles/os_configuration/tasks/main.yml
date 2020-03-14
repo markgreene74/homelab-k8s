@@ -1,0 +1,10 @@
+- name: Log playbook start
+  shell: "echo -n 'Start: ' >> {{ logfile }}; date >> {{ logfile }}"
+- name: Configure the hostname
+  debug:
+    msg: "Configure the hostname"
+- name: Configure the proxy
+  debug:
+    msg: "Configure the proxy"
+- name: Log playbook stop
+  shell: "echo -n 'Stop:  ' >> {{ logfile }}; date  >> {{ logfile }}; echo '' >> {{ logfile }}"
