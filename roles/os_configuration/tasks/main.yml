@@ -1,10 +1,12 @@
 - name: Log playbook start
   shell: "echo -n 'Start: ' >> {{ logfile }}; date >> {{ logfile }}"
-- name: Configure the hostname
+- name: Configure the hostname # FIXME
   debug:
     msg: "Configure the hostname"
 - name: Configure the proxy
-  debug:
-    msg: "Configure the proxy"
+  lineinfile:
+    path: /etc/yum.conf
+    insertafter: '^\[main\]'
+    line: "proxy=http://{{ proxy_ip_port }}"
 - name: Log playbook stop
   shell: "echo -n 'Stop:  ' >> {{ logfile }}; date  >> {{ logfile }}; echo '' >> {{ logfile }}"
