@@ -7,7 +7,15 @@
   - wget
   - deltarpm
   - curl
+  - open-vm-tools
+  - yum-utils
+  notify:
+    - Reboot
 - name: Install updates
   package: name=* state=latest
+  notify:
+    - Reboot
+- name: Delete old kernels
+  shell: package-cleanup --oldkernels --count=2 -y
 - name: Log playbook stop
   shell: "echo -n 'Stop:  ' >> {{ logfile }}; date  >> {{ logfile }}; echo '' >> {{ logfile }}"
