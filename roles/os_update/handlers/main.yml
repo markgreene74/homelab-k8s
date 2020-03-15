@@ -1,4 +1,3 @@
 - name: Reboot
-  command: /sbin/shutdown -r +1 'Reboot required'
-# shell: sleep 2 && shutdown -r now 'Reboot required' && sleep 2
-  ignore_errors: True
+  reboot:
+    post_reboot_delay: 60
