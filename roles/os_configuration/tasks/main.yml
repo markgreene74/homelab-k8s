@@ -1,8 +1,12 @@
 - name: Log playbook start
   shell: "echo -n 'Start: ' >> {{ logfile }}; date >> {{ logfile }}"
-- name: Configure the hostname # FIXME
-  debug:
-    msg: "Configure the hostname"
+- name: Build the hostname
+  set_fact:
+    separator: "{{ '-'  if vm_hostname == 'kworker' else '' }}"
+    vm_number: "{{ ansible_all_ipv4_addresses[0].split('.')[-1][-1]  if vm_hostname == 'kworker' else '' }}"
+- name: Configure the hostname
+  hostname:
+    name: "{{ vm_hostname }}{{ separator }}{{ vm_number }}"
 - name: Configure the proxy
   lineinfile:
     path: /etc/yum.conf

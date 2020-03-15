@@ -1,10 +1,10 @@
 --- # main playbook
-- hosts: all
-  gather_facts: no
-  become: yes
-  tasks:
-  - name: knock knock
-    ping:
+#- hosts: all
+#  gather_facts: no
+#  become: yes
+#  tasks:
+#  - name: knock knock
+#    ping:
 
 - hosts: all
   gather_facts: yes

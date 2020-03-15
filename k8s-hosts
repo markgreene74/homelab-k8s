@@ -1,8 +1,14 @@
 [kmaster]
 10.0.5.100 # master
 
+[kmaster:vars]
+vm_hostname=kmaster
+
 [kworkers]
 10.0.5.10[1:3] # workers 1, 2, 3
+
+[kworkers:vars]
+vm_hostname=kworker
 
 [allvms:children]
 kmaster
