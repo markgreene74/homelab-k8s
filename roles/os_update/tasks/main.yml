@@ -1,6 +1,6 @@
 - name: Log playbook start
   shell: "echo -n 'Start: ' >> {{ logfile }}; date >> {{ logfile }}"
-- name: Install baseline software # FIXME
+- name: Install baseline software
   package: pkg={{ item }} state=present
   with_items:
   - epel-release

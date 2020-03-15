@@ -14,7 +14,6 @@
       vars:
         logfile: "/var/log/ansible_os_configuration.log"
         proxy_ip_port: "10.0.5.1:8888"
-  # FIXME
-  #  - role: os_update
-  #    vars:
-  #      logfile: "/var/log/ansible_os_update.log"
+    - role: os_update
+      vars:
+        logfile: "/var/log/ansible_os_update.log"
