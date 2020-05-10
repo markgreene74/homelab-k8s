@@ -13,3 +13,6 @@ vm_hostname=kworker
 [allvms:children]
 kmaster
 kworkers
+
+[all:vars]
+var_proxy_ip_port="10.0.5.1:8888"

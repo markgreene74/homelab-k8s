@@ -13,7 +13,16 @@
     - role: os_configuration
       vars:
         logfile: "/var/log/ansible_os_configuration.log"
-        proxy_ip_port: "10.0.5.1:8888"
+        proxy_ip_port: "{{ var_proxy_ip_port }}"
     - role: os_update
       vars:
         logfile: "/var/log/ansible_os_update.log"
+
+- hosts: all
+  gather_facts: yes
+  become: yes
+  environment:
+    http_proxy: "http://{{ var_proxy_ip_port }}"
+    https_proxy: "https://{{ var_proxy_ip_port }}"
+  roles:
+    - geerlingguy.docker
